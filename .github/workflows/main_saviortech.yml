@@ -26,7 +26,7 @@ jobs:
           npm install
           cd client
           npm install
-          ng build
+          npm build
           find -maxdepth 1 ! -name dist ! -name . -exec rm -rv {} \;
 
       - name: Zip artifact for deployment
