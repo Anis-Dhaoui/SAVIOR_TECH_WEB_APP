@@ -1,0 +1,76 @@
+<div class="container">
+    <h1 class="well text-center">ADD NEW EVENT</h1>
+    <div class="col-lg-12 well bg-light">
+        <div class="row justify-content-center">
+            <form #addEventForm="ngForm">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>Titre</label>
+                            <input [(ngModel)]="event.event_title" name="event_title" type="text"
+                                placeholder="Entrez le titre ici.." class="form-control">
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>Catégorie</label>
+                            <input [(ngModel)]="event.event_category" name="event_category" type="text"
+                                placeholder="Entrez le category ici.." class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea [(ngModel)]="event.event_description" name="event_description"
+                            placeholder="Entrez la description ici.." rows="12" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            <label>Date Début</label>
+                            <input name="event_start_date" [(ngModel)]="event.event_start_date" class="form-control"
+                                type="date" id="start-date" name="start-date">
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label>Date Fin</label>
+                            <input name="event_end_date" [(ngModel)]="event.event_end_date" class="form-control"
+                                type="date" id="end-date" name="end-date">
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label style="margin-left: 54px;">Status</label>
+                            <label style="margin: auto auto -40px -52px;" class="switch">
+                                <input name="event_status" [(ngModel)]="event.event_status" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            <label>Max Participants</label>
+                            <input name="event_max_participant" [(ngModel)]="event.event_max_participant" type="number"
+                                placeholder="Entrez nb max des participant ici.." class="form-control">
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label>Prix</label>
+                            <input name="event_price" [(ngModel)]="event.event_price" type="number"
+                                placeholder="Entrez le prix ici.." class="form-control">
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label>Organiseur</label>
+                            <input name="event_orgoniser" [(ngModel)]="event.event_orgoniser" type="text"
+                                placeholder="Entrez l'organiseur ici.." class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input #imageInput type="file" (change)="imageInputChange(imageInput)" accept="image/*"
+                            placeholder="Entrez une image ici.." class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Adresse</label>
+                        <input name="event_location" [(ngModel)]="event.event_location" type="text"
+                            placeholder="Entrez l'addresse ici.." class="form-control">
+                    </div>
+                    <button (click)="addNewEvent(addEventForm)" type="button"
+                        class="btn btn-lg btn-info">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

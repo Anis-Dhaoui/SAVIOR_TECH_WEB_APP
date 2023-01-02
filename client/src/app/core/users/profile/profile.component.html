@@ -1,0 +1,138 @@
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ -->
+{{userData.fullName}}
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img crossorigin="anonymous" src="{{userData.avatar}} " *ngIf="userData.avatar" width="203px"
+                        height="230px" />
+                    <img crossorigin="anonymous" src="assets\images\1.jpg" *ngIf="!userData.avatar" width="203px"
+                        height="230px">
+                    <div class="file btn btn-lg btn-primary" style="cursor: pointer;">
+                        Change Photo
+                        <input type="file" name="file" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        {{ userData.fullName}}
+                    </h5>
+                    <h6>
+                        Web Developer and Designer
+                    </h6>
+                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                aria-controls="profile" aria-selected="false">Timeline</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>WORK LINK</p>
+                    <a href="">Website Link</a><br />
+                    <a href="">Bootsnipp Profile</a><br />
+                    <a href="">Bootply Profile</a>
+                    <p>SKILLS</p>
+                    <a href="">Web Designer</a><br />
+                    <a href="">Web Developer</a><br />
+                    <a href="">WordPress</a><br />
+                    <p>WooCommerce</p><br />
+
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Full Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="fullName" id="fullName" [(ngModel)]="userData.fullName"
+                                    value="{{userData.fullName}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="email" id="email" [(ngModel)]="userData.email"
+                                    value="{{userData.email}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="phone" id="phone" [(ngModel)]="userData.phone"
+                                    value="{{userData.phone}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>speciality</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="speciality" id="speciality" [(ngModel)]="userData.speciality"
+                                    value="{{userData.speciality}}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Interest</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="interest" id="interest" [(ngModel)]="userData.interest"
+                                value="{{userData.interest}}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>role</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="Role" id="Role" value="  {{userData.role}}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>domain</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="domain" id="domain" [(ngModel)]="userData.domain"
+                                value="{{userData.domain}}">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input (click)="saveUpdate()" type="submit" class="btn btn-outline-secondary" name="btnAddMore"
+                            value="update" />
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

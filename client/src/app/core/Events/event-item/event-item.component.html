@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-lg-4 col-sm-6" *ngFor="let item of eventList">
+    <div class="g-post-classic" style="height: 450px; max-height: 450px; min-height: 450px ;">
+      <figure>
+        <img crossorigin="anonymous" style="cursor: pointer; width: 306px; height: 208px"
+          routerLink="/events/{{item.id}}" alt="{{item.event_title}}" src="{{item.event_image}}">
+        <i style="cursor: pointer;" routerLink="/events/{{item.id}}" class="fa fa-2x fa-eye-slash"></i>
+      </figure>
+      <div class="g-post-meta">
+        <div class="post-title">
+          <h4>
+            <a style="cursor: pointer;" routerLink="/events/{{item.id}}">
+              {{item.event_title}}
+            </a>
+          </h4>
+          <p class="text-limit">
+            {{item.event_description}}
+          </p>
+          <div>
+            <span class="p-date">By:
+              <b>{{item.event_orgoniser}}</b>
+            </span>
+            <span class="p-date align-right">
+              {{moment(item.createdAt).fromNow()}}
+            </span>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+          <span title="Reviews" style="color: gray; font-size: 13px" class="col">
+            <i class="fa fa-comment-o"></i>
+            {{item.Reviews.length}} {{ item.Reviews.length > 1 ? " Reviews" : " Review"}}
+          </span>
+          <span title="Participants" style="color: gray; font-size: 13px; margin-top: 2px;"
+            class="col d-flex justify-content-end">
+            <i class="fa fa-group"></i>
+            &nbsp;{{item.Users.length}} {{item.Users.length > 1 ? " Participants" : "
+            Participant"}}
+          </span>
+        </div>
+        <div class="row justify-content-center mt-3 mb-n4">
+          <app-rating-system [reviews]="item.Reviews"></app-rating-system>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

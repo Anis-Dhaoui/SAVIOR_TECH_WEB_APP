@@ -1,0 +1,17 @@
+<app-add-question></app-add-question>
+
+<div class="col-lg-12 col-sm-12">
+    <div class="post-filter-sec">
+        <div class="post-comt-box">
+            <form>
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="on"
+                    placeholder=" SEARCH  ">
+            </form>
+        </div>
+
+    </div>
+</div>
+<app-item-question [listQuestion]="listQuestion | filter:searchText"></app-item-question> <!-- add post new box -->
+<div class="loadMore">
+
+</div>

@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="e-tabs mb-3 px-3">
+        <ul class="nav nav-tabs">
+          <li class="nav-item"><a class="nav-link active" href="#">Users</a></li>
+        </ul>
+      </div>
+
+      <div class="flex-lg-nowrap">
+        <div class="e-panel card">
+          <div class="card-body">
+            <div class="card-title">
+              <h6 class="mr-2"><span>Users</span><small class="px-1">Be a wise leader</small></h6>
+            </div>
+            <div class="e-table">
+              <div class="table-responsive table-lg mt-3">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="align-top">
+                        <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0">
+                          <input type="checkbox" class="custom-control-input" id="all-items">
+                          <label class="custom-control-label" for="all-items"></label>
+                        </div>
+                      </th>
+                      <th>Photo</th>
+                      <th class="max-width">Full Name</th>
+                      <th class="sortable">User Name</th>
+                      <th class="max-width">Email</th>
+                      <th class="max-width">Phone</th>
+                      <th class="max-width">Domain</th>
+                      <th class="max-width">Speciality</th>
+                      <th class="max-width">Role</th>
+                      <th class="max-width">Interest</th>
+                      <th class="max-width">Admin</th>
+                      <th class="max-width">Status</th>
+                      <th> Block </th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of list; let i=index">
+                      <td class="align-middle">
+                        <div
+                          class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
+                          <input type="checkbox" class="custom-control-input" id="item-1">
+                          <label class="custom-control-label" for="item-1"></label>
+                        </div>
+                      </td>
+                      <td class="align-middle text-center">
+                        <div class="bg-light d-inline-flex justify-content-center align-items-center align-top"
+                          style="width: 35px; height: 35px; border-radius: 3px;"><span class="fa fa-user"></span>
+                        </div>
+                      </td>
+                      <td class="text-nowrap align-middle" matColumnDef="location">{{user.fullName}}</td>
+                      <td class="text-nowrap align-middle">{{user.username}}</td>
+                      <td class="text-nowrap align-middle">{{user.email}}</td>
+                      <td class="text-nowrap align-middle">{{user.phone}} </td>
+                      <td class="text-nowrap align-middle">{{user.domain}} </td>
+                      <td class="text-nowrap align-middle"> {{user.speciality}} </td>
+                      <td class="text-nowrap align-middle"> {{user.role}} </td>
+                      <td class="text-nowrap align-middle"> {{user.interest}} </td>
+                      <td class="text-nowrap align-middle"><span>{{user.admin}} </span></td>
+                      <td class="text-nowrap align-middle"><span> {{user.status}} </span></td>
+                      <td class="text-center align-middle">
+                        <span style="cursor: pointer;" class="fa fa-ban fa-2x text-danger"
+                          (click)="blockUser(user.id, i)"></span>
+                      </td>
+                      <td class="text-center align-middle">
+                        <div class="btn-group align-top">
+
+                          <!-- (click)="upUser(i)" -->
+                          <button class="btn btn-sm btn-outline-secondary" type="button"><span
+                              class="fa fa-2x fa-trash text-danger" data-toggle="modal" data-target="#myModalS"></span>
+
+
+                          </button>
+                          <div id="myModalS" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <p>Confirm</p>
+                                </div>
+                                <div class="modal-body">
+                                  <p>are you sure to delete this user: {{user.fullName}}</p>
+                                </div>
+
+
+
+                                <div class="modal-footer">
+                                  
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                    (click)="deleteUser(user.id, i)">delete</button>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.emptyStar {
+    position: relative;
+    display: inline-block;
+    font-size: 1.8rem;
+    padding-right: 0.1rem;
+    color: #d3d3d3;
+}
+
+.filledStar {
+    color: #FFD700;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

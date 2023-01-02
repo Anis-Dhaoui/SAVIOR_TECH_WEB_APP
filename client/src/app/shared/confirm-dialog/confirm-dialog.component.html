@@ -1,0 +1,21 @@
+<div id="myModal">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div>
+                <h4 class="modal-title w-100">Are you sure?</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{confirmMessage}}</p>
+            </div>
+            <div mat-dialog-actions class="modal-footer justify-content-center">
+                <button (click)="dialogRef.close(true)" mat-button mat-dialog-close
+                    class="btn btn-danger">Delete</button>
+                <button (click)="dialogRef.close(false)" mat-button mat-dialog-close cdkFocusInitial
+                    class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,151 @@
+<div class="central-meta item">
+  <div class="x_panel" *ngIf="UserCon">
+    <ul class="toolbox" *ngIf="listQuestion.User.id==UserCon.id">
+
+      <li class="dropdown">
+        <a href="update/{{listQuestion.id}}" class="close-link"><i class="fa fa-wrench" title="Update"></i></a>
+
+      <li><a class="close-link"><i class="fa fa-close" title="Supprimer"></i></a>
+      </li>
+    </ul>
+  </div>
+  <div class="user-post">
+    <div class="friend-info">
+      <figure>
+        <img crossorigin="anonymous" *ngIf="listQuestion.User.avatar!=null" src="{{listQuestion.User.avatar}}"
+          class="dropbtn" style="width: 60px; height: 60px;" alt>
+        <img crossorigin="anonymous" *ngIf="listQuestion.User.avatar==null" class="dropbtn"
+          style="width: 60px; height: 60px;" src="assets\images\1.jpg">
+      </figure>
+      <div class="friend-name">
+        <ins>
+          <a title>
+            {{listQuestion.User.fullName}}
+          </a>
+        </ins>
+        <span>Published: {{moment(listQuestion.createdAt).fromNow()}}</span>
+      </div>
+      <div class="post-meta">
+        <div *ngIf="listQuestion.image!=null"><img crossorigin="anonymous" src="{{listQuestion.image}}"></div>
+
+
+        <div class="description">
+
+          <p>
+            <a href="#">{{listQuestion.titre}}</a><br>
+            {{listQuestion.description}}
+          </p>
+        </div>
+        <div class="we-video-info">
+          <ul>
+            <li>
+              <span class="like" data-toggle="tooltip" title="like" (click)="reaction(listQuestion.id,'like')">
+                <i class="ti-heart"></i>
+                <ins>Like</ins>
+              </span>
+            </li>
+            <li>
+              <span class="dislike" data-toggle="tooltip" title="dislike" (click)="reaction(listQuestion.id,'dislike')">
+                <i class="ti-heart-broken"></i>
+                <ins>DisLike</ins>
+              </span>
+            </li>
+            <li>
+              <span class="comment" data-toggle="tooltip" title="Comments">
+                <i class="fa fa-comments-o"></i>
+                <ins>Comment</ins>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="coment-area">
+
+      <ul class="we-comet">
+
+        <li *ngFor="let list of listReponses; let i=index ">
+
+          <div class="comet-avatar">
+            <img crossorigin="anonymous" class="dropbtn" style="width: 60px; height: 60px;" *ngIf="list.User.avatar"
+              src="{{list.User.avatar}}" alt>
+            <img crossorigin="anonymous" class="dropbtn" style="width: 60px; height: 60px;" src="assets\images\1.jpg"
+              *ngIf="!list.User.avatar" alt="">
+          </div>
+          <div class="we-comment">
+
+            <div class="coment-head">
+              <div class="x_panel" *ngIf="userData">
+                <ul class="toolbox" *ngIf="UserCon.id==list.User.id">
+
+                  <li class="dropdown">
+                    <a class="close-link"><i class="fa fa-wrench" title="Update" (click)="updateRe()"></i></a>
+
+                  <li><a class="close-link"><i class="fa fa-close" title="Supprimer"
+                        (click)="deleteReponses(list.id,i)"></i></a>
+                  </li>
+                </ul>
+              </div>
+              <h5><a href="" title>
+                  {{list.User.fullName}}
+                </a></h5>
+              <span>Published: {{moment(list.createdAt).fromNow()}}</span>
+              <a class="we-reply" href="#" title="Reply">
+                <i class="fa fa-reply"></i>
+              </a>
+            </div>
+            <p>{{list.message}}</p>
+            <div class="we-video-info">
+              <ul>
+                <li>
+                  <span class="like" data-toggle="tooltip" title="like" (click)="vote('like',list.id)">
+                    <i class="ti-heart"></i>
+                    <ins>UpVote</ins>
+                  </span>
+                </li>
+                <li>
+                  <span class="dislike" data-toggle="tooltip" title="dislike" (click)="vote('dislike',list.id)">
+                    <i class="ti-heart-broken"></i>
+                    <ins>DownVote</ins>
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="post-comt-box" *ngIf="updateReponses==true">
+              <form #f="ngForm">
+                <textarea [(ngModel)]="reponses.message" name="message" placeholder="{{list.message}}"></textarea>
+                <div class="add-smiles">
+                  <button type="submit" (click)="UpdateReponses(reponses,list.id)"><i
+                      class="fa fa-paper-plane"></i></button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </li>
+
+        <li>
+          <a href="#" title="" class="showmore underline">more comments</a>
+        </li>
+        <li class="post-comment">
+          <div class="comet-avatar" *ngIf="UserCon">
+            <img crossorigin="anonymous" src="{{UserCon.avatar}}" class="dropbtn" style="width: 60px; height: 60px;">
+          </div>
+          <div class="comet-avatar" *ngIf="!UserCon">
+            <img crossorigin="anonymous" class="dropbtn" style="width: 60px; height: 60px;" src="assets\images\1.jpg">
+          </div>
+          <div class="post-comt-box">
+            <form #f="ngForm">
+              <textarea placeholder="Post your comment" [(ngModel)]="reponses.message" name="message"></textarea>
+              <div class="add-smiles">
+                <button type="submit" (click)="save()">
+                  <font color="#3349FF"><i class="fa fa-paper-plane"></i></font>
+                </button>
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

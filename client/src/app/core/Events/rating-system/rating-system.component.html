@@ -1,0 +1,6 @@
+<ng-template #t let-fill="fill">
+    <i class="bi-star-fill emptyStar">
+        <i *ngIf="fill > 0" class="bi-star-fill filledStar emptyStar" [style.width.%]="fill"></i>
+    </i>
+</ng-template>
+<ngb-rating [rate]="calcRating(reviews)" [starTemplate]="t"></ngb-rating>

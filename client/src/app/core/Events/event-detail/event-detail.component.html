@@ -1,0 +1,217 @@
+<div class="row" style="margin: -64px -32px 0px -32px;">
+    <section class="col-12">
+        <div class="ext-gap bluesh high-opacity">
+            <div class="content-bg-wrap" style="background: url(../../../../assets/images/resources/animated-bg2.png)">
+            </div>
+            <div class="">
+                <div class="row">
+                    <div class="col-lg-4 d-flex justify-content-center" style="z-index: 1;">
+                        <div>
+                            <h6
+                                style="margin-bottom: -7px; font-size: 13px; color: #04ff04; margin-left: 12px; font-weight: bolder;">
+                                START DATE
+                            </h6>
+                            <time datetime="2014-09-20" class="icon">
+                                <em style="margin-bottom: -6px;">{{moment(event.event_start_date).format('h:mm')}}</em>
+                                <strong>{{moment(event.event_start_date).format('MMMM')}}</strong>
+                                <span style="margin-top: 17px;">{{moment(event.event_start_date).format('DD')}}</span>
+                            </time>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="top-banner">
+                            <h1>{{event.event_title}}</h1>
+                            <nav class="breadcrumb">
+                                <a class="breadcrumb-item" routerLink="/">Home</a>
+                                <a routerLink="/events" class="breadcrumb-item">Events</a>
+                                <span class="breadcrumb-item active">{{event.event_title}}</span>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 d-flex justify-content-center" style="z-index: 1;">
+                        <div>
+                            <h6
+                                style="margin-bottom: -7px; font-size: 13px; color: #ff0404; margin-left: 18px; font-weight: bolder;">
+                                END DATE
+                            </h6>
+                            <time datetime="2014-09-20" class="icon">
+                                <em style="margin-bottom: -6px;">{{moment(event.event_end_date).format('h:mm')}}</em>
+                                <strong>{{moment(event.event_end_date).format('MMMM')}}</strong>
+                                <span style="margin-top: 17px;">{{moment(event.event_end_date).format('DD')}}</span>
+                            </time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- top area animated -->
+
+    <section>
+        <div class="gap ext-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-lg-1 col-lg-10">
+                        <div class="detail-page">
+                            <div class="detail-top">
+                                <img crossorigin="anonymous" src="{{event.event_image}}" alt="event image"
+                                    style="width:922px; height: 370px">
+                                <div class="connect-with">
+                                    <ul class="social-connect">
+                                        <li class="rs">
+                                            <i class="fa fa-user-plus"></i>
+                                            <span>
+                                                <ng-container *ngIf="isParticipated; else participateBtn">
+                                                    <a (click)="participate()" style="cursor: pointer;"
+                                                        class="text-danger">
+                                                        Unpart
+                                                    </a>
+                                                </ng-container>
+                                                <ng-template #participateBtn>
+                                                    <a (click)="participate()"
+                                                        [attr.data-toggle]="userInfo.isAuthenticated ? 'modal' : null"
+                                                        [attr.data-target]="userInfo.isAuthenticated ? '#payOnline' : null"
+                                                        style="cursor: pointer;">
+                                                        Participate
+                                                    </a>
+                                                </ng-template>
+                                                <i>to this event</i>
+                                            </span>
+                                        </li>
+                                        <li class="twit">
+                                            <i class="fa fa-money"></i>
+                                            <span>
+                                                <a href="#" style="pointer-events: none;">Price</a>
+                                                <i> {{event.event_price}} DT </i>
+                                            </span>
+                                        </li>
+                                        <li class="fb">
+                                            <i class="fa fa-map-marker"></i>
+                                            <span>
+                                                <a style="pointer-events: none;" href="#">Location</a>
+                                                <i>{{event.event_location}}</i>
+                                            </span>
+                                        </li>
+                                        <li class="googl">
+                                            <i class="fa fa-group"></i>
+                                            <span>
+                                                <a style="pointer-events: none;" href="#">Maximum</a>
+                                                <i>{{event.event_max_participant}}</i>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="detail-meta">
+                                <h2>{{event.event_title}}</h2>
+                                <div class="post-time">
+                                    <div class="author-thumb">
+                                        <img src="../../../../assets/images/resources/chatlist2.jpg" alt="">
+                                        <span>By {{event.event_orgoniser}}</span>
+                                    </div>
+                                    <span class="post-date">
+                                        <i class="fa fa-calendar"></i>
+                                        <span> {{moment(event.createdAt).fromNow()}}</span>
+                                    </span>
+                                    <span class="coments">
+                                        <i class="fa fa-comments"></i>
+                                        <span> {{reviews ? reviews.length : 0}}</span>
+                                    </span>
+                                    <span class="coments">
+                                        <i class="fa fa-group"></i>
+                                        <span> {{participants ? participants.length : 0}}</span>
+                                    </span>
+                                </div>
+                                <p>
+                                    {{event.event_description}}
+                                </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non.
+                                </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipi slabore et dolore magna aliqua. Ut
+                                    enim ad minim irure dolor in reprehenderit.
+                                </p>
+
+                                <div class="tag-n-cat">
+                                    <div class="tags">
+                                        <span><i class="fa fa-tags"></i> Post Tags:</span>
+                                        <a href="#" title="">{{event.event_category}}</a>
+                                    </div>
+                                    <div class="tags">
+                                        <span><i class="fa fa-filter"></i> Post Categories:</span>
+                                        <a href="#" title="">{{event.event_category}}</a>
+                                    </div>
+                                </div>
+
+
+                                <div class="gap-60">
+                                    <div class="site-admin">
+                                        <div class="admin-avatar">
+                                            <img crossorigin="anonymous"
+                                                src="https://www.imageactions.com/wp-content/uploads/2020/01/FDT.png"
+                                                alt="">
+                                        </div>
+                                        <div class="admin-postmeta">
+                                            <h4>{{event.event_orgoniser}}</h4>
+                                            <span>Grow your skills Define your future</span>
+                                            <p>
+                                                The « ELIFE » program aims to build 10 technological centers dedicated
+                                                to Tunisian youth in the ten most marginalized
+                                                and disadvantaged regions in the interior of Tunisia (Siliana, Béja, Le
+                                                Kef, Jendouba, Kairouan, Sidi Bouzid, Gafsa,
+                                                Tozeur ; Gabes, and Medenine).
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- REVIEWS -->
+                                <div class="gap-60 no-top">
+                                    <div class="comment-area">
+                                        <app-reviews (removeRevEvent)="deleteRev($event)" [reviewsProps]="reviews">
+                                        </app-reviews>
+                                    </div>
+                                </div>
+
+                                <!-- REVIEWS FORM -->
+                                <div class="gap-60 no-gap">
+                                    <app-add-review (newReviewEVent)="postReview($event)" [eventIdProps]="event.id">
+                                    </app-add-review>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Modal -->
+<div class="modal top fade" id="payOnline" tabindex="-1" role="dialog" aria-labelledby="payOnlineLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="payOnlineLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                You can pay <b>{{event.event_price}} DT</b> as participation fees online
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button (click)="payNow()" type="button" class="btn btn-primary">Pay Now</button>
+            </div>
+        </div>
+    </div>
+</div>

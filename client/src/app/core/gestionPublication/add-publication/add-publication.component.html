@@ -1,0 +1,33 @@
+<div class="central-meta" *ngIf="userData">
+    <div class="new-postbox">
+        <figure>
+            <img crossorigin="anonymous" src="{{detailData.avatar}}" alt="Photo" *ngIf="detailData.avatar">
+            <img src="assets\images\1.jpg" alt="" *ngIf="!detailData.avatar">
+        </figure>
+        <div class="newpst-input">
+            <form #form="ngForm">
+                <textarea rows="1" name="titre" placeholder="Titre" [(ngModel)]="publication.titre" #titre="ngModel"
+                    required></textarea>
+                <textarea rows="2" placeholder="Description" name="description" [(ngModel)]="publication.description"
+                    #description="ngModel" required></textarea>
+                <div class="attachments">
+                    <img src alt="">
+
+                    <ul>
+
+                        <li>
+
+                            <label class="fileContainer">
+
+                                <input #imageInput type="file" (change)="imageInputChange(imageInput)" accept="image/*"
+                                    class="form-control"> <i class="fa fa-image"></i> </label>
+                        </li>
+                        <li>
+                            <button type="submit" (click)=" ajout()" [disabled]="form.invalid ">Post</button>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

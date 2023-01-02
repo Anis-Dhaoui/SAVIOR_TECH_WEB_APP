@@ -1,0 +1,34 @@
+<li *ngFor="let list of listReponses">
+  <div class="comet-avatar">
+    <img crossorigin="anonymous" src="../assets/images/resources/comet-1.jpg" alt>
+  </div>
+  <div class="we-comment">
+    <div class="coment-head">
+      <h5><a href="time-line.html" title>
+          {{list.User.fullName}}
+        </a></h5>
+      <span>Published: {{moment(list.createdAt).fromNow()}}</span>
+      <a class="we-reply" href="#" title="Reply">
+        <i class="fa fa-reply"></i>
+      </a>
+    </div>
+    <p>{{list.message}}</p>
+    <div class="we-video-info">
+      <ul>
+        <li>
+          <span class="like" data-toggle="tooltip" title="like">
+            <i class="ti-heart"></i>
+            <ins>2.2k</ins>
+          </span>
+        </li>
+        <li>
+          <span class="dislike" data-toggle="tooltip" title="dislike">
+            <i class="ti-heart-broken"></i>
+            <ins>200</ins>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</li>

@@ -1,0 +1,84 @@
+<h4 class="comment-title" *ngIf="reviewsProps">{{reviewsProps.length}} Reviews</h4>
+<div class="comment-area" style="max-height:650px; overflow-y: auto; overflow-x: hidden; padding: 15px 0px;">
+    <ul class="row comments">
+        <li class="col-lg-12" *ngFor="let item of reviewsProps; let i = index;">
+
+            <div class="{{i%2 == 0 ? 'comment-box bg-white' : 'comment-box'}}" style="display: block;">
+                <div class="commenter-photo">
+                    <img crossorigin="anonymous" style="width: 80px; height: 100px;" alt=""
+                        src="{{item.User.avatar != null ? item.User.avatar : '../../../../../../assets/images/1.jpg'}}">
+                </div>
+                <div class="commenter-meta bg">
+                    <div class="row">
+                        <div class="col-3">
+                            <h6 style="font-size: 20px;">{{item.User.fullName}}</h6>
+                        </div>
+                        <div class="col-3">
+                            <span class="text-primary">{{moment(item.createdAt).fromNow()}}</span>
+                        </div>
+
+                        <ng-container *ngIf="editItemId !== item.id; else editable">
+                            <div class="col-4 mb-1 d-flex justify-content-end">
+                                <app-rating-system [reviews]="[item]"></app-rating-system>
+                            </div>
+                            <div class="col-2 mb-1 d-flex justify-content-end" id="container">
+                                <div id="menu-wrap" *ngIf="isAuth && item.User.id == authUserId">
+                                    <input type="checkbox" class="toggler" />
+                                    <div class="dots">
+                                        <div></div>
+                                    </div>
+                                    <div class="menu">
+                                        <div>
+                                            <ul style="margin-left: -24px;">
+                                                <li><a style="cursor: pointer;" (click)="turnReviewToEditMode(item)"
+                                                        class="link">Edit</a></li>
+                                                <li><a style="cursor: pointer;" (click)="removeRevEmmiter(item.id)"
+                                                        class="link text-danger">Remove</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <p style="width: 722px; min-width: 722px; max-width: 722px;">
+                                {{item.message}}
+                            </p>
+                        </ng-container>
+
+                        <!-- $$$$$$$$$$$$$$ EDIT MODE  $$$$$$$$$$$$$$ -->
+
+                        <ng-template #editable>
+                            <div class="col-4 mb-1 d-flex justify-content-end">
+                                <ng-template #t let-fill="fill">
+                                    <i class="bi-star-fill emptyStar">
+                                        <i *ngIf="fill > 0" class="bi-star-fill filledStar emptyStar"
+                                            [style.width.%]="fill"></i>
+                                    </i>
+                                </ng-template>
+                                <ngb-rating [readonly]="false" [(rate)]="rating" [starTemplate]="t" [max]="5">
+                                </ngb-rating>
+                            </div>
+                            <div class="col-2 mb-1 d-flex justify-content-end" id="container">
+                                <div class="ui-group-buttons">
+                                    <button (click)="updateReview(i)" class="btn btn-success" role="button">
+                                        <span class="fa fa-check-circle"></span>
+                                    </button>
+                                    <div class="or"></div>
+                                    <button (click)="cancelEditMode()" class="btn btn-danger" role="button">
+                                        <span class="fa fa-times-circle"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <hr>
+                            <textarea [(ngModel)]="message" value="{{item.message}}"
+                                style="width: 722px; min-width: 722px; max-width: 722px;" name="editMessage"
+                                id="editMessage" cols="10" rows="3">
+                            </textarea>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

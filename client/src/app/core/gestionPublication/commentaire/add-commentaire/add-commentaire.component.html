@@ -1,0 +1,19 @@
+<div *ngIf="userData">
+    <div class="comet-avatar">
+        <img crossorigin="anonymous" src="{{avatar}}" alt="avatar" *ngIf="avatar">
+        <img crossorigin="anonymous" src="assets\images\1.jpg" alt="" *ngIf="!avatar">
+
+    </div>
+    <div class="post-comt-box">
+        <form method="post" #form="ngForm">
+            <textarea placeholder="postez votre commentaire" name="description" [(ngModel)]="commentaire.description"
+                #description="ngModel" required></textarea>
+            <div class="add-smiles">
+                <button type="submit" class="text-dark" (click)="addCom()" [disabled]="form.invalid"><i
+                        class="bi bi-send "></i></button>
+
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,153 @@
+<div class="p-5 register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="../../../../assets/images/savior_tech_logo.png" style="width: 118px; height: 53px;"
+                alt="savior_tech_logo" />
+            <h3>Welcome</h3>
+            <p>You are 30 seconds away from earning your own money!</p>
+        </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        aria-controls="home" aria-selected="true">Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                        aria-controls="profile" aria-selected="false">Sign in</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+
+                <!-- $$$$$$$$$$$$  SIGN UP $$$$$$$$$$$$ -->
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Create your new account</h3>
+                    <form>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="true" name="fullName" #n="ngModel"
+                                        [(ngModel)]="user.fullName" placeholder="Full Name *" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="true" name="username" #u="ngModel"
+                                        [(ngModel)]="user.username" placeholder="username *" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password" #p="ngModel"
+                                        [(ngModel)]="user.password" placeholder="Password *" value="" />
+                                </div>
+                                <!-- <div class="container"> -->
+                                <!-- <div class="row">
+                                       
+                                            
+                                            <select name="domain" class="form-control select2" [(ngModel)]="user.domain">
+                                               <option value="Data Science">Data Science</option> 
+                                               <option value="Artificiel Intellegent">Artificiel Intellegent</option> 
+                                               <option value="Cloud Computing">Cloud Computing</option> 
+                                               <option value="Cyber Sectrity">Cyber Sectrity</option> 
+                                               <option value="Degital">Degital</option> 
+                                               <option value="Web Developpement">Web Developpement</option> 
+                                            </select>
+                                        
+                                     </div>
+                                </div> -->
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="domain" #d="ngModel"
+                                        [(ngModel)]="user.domain" placeholder="Domain *" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="role" #d="ngModel"
+                                        [(ngModel)]="user.role" placeholder="Role *" value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" #e="ngModel"
+                                        [(ngModel)]="user.email" placeholder="Youe Email *" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" minlength="10" maxlength="10" name="phone" #ph="ngModel"
+                                        [(ngModel)]="user.phone" class="form-control" placeholder="Your Phone *"
+                                        value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="speciality" #s="ngModel"
+                                        [(ngModel)]="user.speciality" placeholder="Spaciality *" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="interest" #i="ngModel"
+                                        [(ngModel)]="user.interest" placeholder="interest *" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input #imageInput type="file" (change)="imageInputChange(imageInput)"
+                                        accept="image/*" placeholder="Entrez une image ici.." class="form-control">
+                                </div>
+                                <input type="submit" class="btnRegister" (click)="register()" value="Register" />
+                                <!-- <input type="submit" class="btn btn-danger" (click)="logout()" value="logout" /> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- $$$$$$$$$$$$  SIGN IN $$$$$$$$$$$$ -->
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3 class="register-heading">Authenticate here</h3>
+                    <form>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="username" [(ngModel)]="creds.username"
+                                        placeholder="User Name *" value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password"
+                                        [(ngModel)]="creds.password" placeholder="Password *" value="" />
+                                </div>
+
+                                <input type="submit" class="btnRegister" (click)="login()" value="Login" />
+                            </div>
+                        </div>
+                        <a class="text-primary d-flex justify-content-end" style="cursor: pointer;" data-toggle="modal"
+                            data-target="#exampleModal">
+                            Forget Password
+                        </a>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal top fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 300px;">
+        <div class="modal-content text-center">
+            <div class="modal-header h5 text-white bg-primary justify-content-center">
+                Password Reset
+            </div>
+            <div class="modal-body px-5">
+                <p class="py-2">
+                    Enter your email address and we'll send you an email with instructions to reset your password.
+                </p>
+                <div class="form-outline">
+                    <input [(ngModel)]="email" name="email" type="email" id="typeEmail" class="form-control my-3" />
+                    <label class="form-label" for="typeEmail">Email input</label>
+                </div>
+                <a (click)="resetPassword()" class="btn btn-primary w-100">Reset password</a>
+                <div class="d-flex justify-content-between mt-4">
+                    <a class="" href="#">Login</a>
+                    <a class="" href="#">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

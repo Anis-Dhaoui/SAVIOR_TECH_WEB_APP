@@ -1,0 +1,67 @@
+<div class="central-meta item" *ngFor="let list of listQuestion | filter:searchText; let i=index">
+  <div class="x_panel">
+    <ul class="toolbox" *ngIf="idUserCon==list.User.id">
+
+      <li class="dropdown">
+        <a href="update/{{list.id}}" class="close-link"><i class="fa fa-wrench" title="Update"></i></a>
+
+      <li><a (click)="delete(list.id,i)" class="close-link"><i class="fa fa-close" title="Delete"></i></a>
+      </li>
+    </ul>
+  </div>
+  <div class="user-post">
+    <div class="friend-info">
+
+      <figure>
+        <img crossorigin="anonymous" *ngIf="list.User.avatar" class="dropbtn" style="width: 60px; height: 60px;"
+          src="{{list.User.avatar}}" alt>
+        <img crossorigin="anonymous" class="dropbtn" style="width: 60px; height: 60px;" src="assets\images\1.jpg"
+          *ngIf="!list.User.avatar" alt="">
+      </figure>
+
+      <div class="friend-name">
+        <ins>
+          <a href="time-line.html" title>
+            {{list.User.fullName}}
+          </a>
+        </ins>
+        <span>Published: {{moment(list.createdAt).fromNow()}}</span>
+      </div>
+
+      <div class="post-meta">
+        <img crossorigin="anonymous" *ngIf="list.image!=null" src="{{list.image}}" alt>
+
+        <div class="description">
+
+          <p>
+            <a routerLink="{{list.id}}">{{list.titre}}</a><br>
+            {{list.description}}
+          </p>
+        </div>
+        <div class="we-video-info">
+          <ul>
+            <li>
+              <span class="like" data-toggle="tooltip" title="like" (click)="reaction(list.id,'like')">
+                <i class="ti-heart"></i>
+                <ins>Like</ins>
+              </span>
+            </li>
+            <li>
+              <span class="dislike" data-toggle="tooltip" title="dislike" (click)="reaction(list.id,'dislike')">
+                <i class="ti-heart-broken"></i>
+                <ins>Dislike</ins>
+              </span>
+            </li>
+            <li>
+              <span class="comment" data-toggle="tooltip" title="Comments">
+                <i class="fa fa-comments-o"></i>
+                <ins>Comment</ins>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

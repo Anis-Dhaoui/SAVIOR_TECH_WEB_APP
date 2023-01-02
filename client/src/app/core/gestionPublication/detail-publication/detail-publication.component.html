@@ -1,0 +1,123 @@
+<div class="loadMore">
+  <div class="central-meta item">
+    <div class="user-post">
+
+      <div class="dropdown float-right" *ngIf="data.UserId == userC">
+        <i class="fa fa-ellipsis-v"></i>
+        <div class="dropdown-content mr-5">
+
+          <!--<a>Signaler</a>-->
+          <a data-toggle="modal" data-target="#myModal">Modifier</a>
+          <a data-toggle="modal" data-target="#myModalS">Supprimer</a>
+        </div>
+      </div>
+      <!-- Trigger the modal with a Supp -->
+
+
+      <!-- Modal -->
+      <div id="myModalS" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-body">
+              <p>Confirmer</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="delet()">Supprimer</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Trigger the modal with a Modifier -->
+
+
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <form #form="ngForm">
+              <div class="modal-body">
+                <label for="message-text" class="col-form-label">Titre</label>
+                <textarea class="form-control" id="message-text" [(ngModel)]="publication.titre" name="titre"
+                  placeholder="{{data.titre}}"> </textarea>
+
+                <label for="message-text" class="col-form-label">Description</label>
+                <textarea class="form-control" id="message-text" [(ngModel)]="publication.description"
+                  name="description" rows="15" placeholder="{{data.description}}"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                  (click)="updatePublicatioin()">Modifier</button>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div class="friend-info over ">
+        <figure>
+          <img crossorigin="anonymous" src="{{data.avatar}}" alt="avatar" *ngIf="data.avatar">
+          <img crossorigin="anonymous" src="assets\images\1.jpg" alt="" *ngIf="!data.avatar">
+        </figure>
+        <div class="friend-name">
+          <ins>
+            <a> {{data.fullName}}
+            </a>
+          </ins>
+          <span>Publier: {{moment(data.createdAt).fromNow()}}</span>
+        </div>
+        <div class="post-meta">
+          <h4 class="overflow-ellipsis">{{data.titre}}</h4>
+          <img crossorigin="anonymous" *ngIf="data.image" src="{{data.image}}">
+          <img crossorigin="anonymous" *ngIf="!data.image" src="assets\images\resources\publicationDefaut.png">
+          <div class="we-video-info">
+            <ul>
+
+              <app-add-reaction [idP]="idPublication"></app-add-reaction>
+              <li>
+                <span class="comment" data-toggle="tooltip" title="Comments">
+                  <i class="fa fa-comments-o"></i>
+                  <ins>{{nbrCom}}</ins>
+                </span>
+              </li>
+
+            </ul>
+          </div>
+          <div class="description">
+
+            <p>
+              {{data.description}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="coment-area">
+        <ul class="we-comet">
+          <li>
+
+            <app-get-commentaire [idP]="idPublication" (nbrCom)="correction($event)"></app-get-commentaire>
+
+          </li>
+
+
+          <li class="post-comment">
+            <app-add-commentaire [idP]="idPublication"></app-add-commentaire>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
