@@ -1,11 +1,4 @@
 # Node.js with Angular
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure for Students(4f1cea10-6ce9-4ed5-adf0-69029bdca0f2)'
-    appType: 'webApp'
-    WebAppName: 'saviortech'
-    packageForLinux: '/dist'
 # Build a Node.js project that uses Angular.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -30,3 +23,11 @@ steps:
     ng build --prod
     find -maxdepth 1 ! -name dist ! -name . -exec rm -rv {} \;
   displayName: 'npm install and build'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students(4f1cea10-6ce9-4ed5-adf0-69029bdca0f2)'
+    appType: 'webApp'
+    WebAppName: 'saviortech'
+    packageForLinux: '/dist'
