@@ -21,21 +21,23 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: npm install, build, and test
+      - name: npm install, build, and  ng build
         run: |
           npm i -g @angular/cli
           npm install
           cd client
           npm install
-          ng build --prod
+          ng build
           find -maxdepth 1 ! -name dist ! -name . -exec rm -rv {} \;
 
+      - name: Zip artifact for deployment
+        run: zip release.zip . -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,6 +51,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
+
+      - name: unzip artifact for deployment
+        run: unzip release.zip
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
