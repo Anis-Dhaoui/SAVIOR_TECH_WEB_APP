@@ -16,8 +16,7 @@
     "production": {
         "username": "root",
         "password": null,
-        "database": "savior_tech_db",
-        "host": "127.0.0.1",
+        "database": "AccountEndpoint=https://saviortedhdatabaseaccount.documents.azure.com:443/;AccountKey=OIlpzRSIRiwA7MMGQYObO9rufdeNYirYaaL2c6uqB9Ogr8DCAKWLzjpvACElnm3Trtt7yGehy3IeACDbyvLqmQ==",
         "dialect": "mysql"
     }
 }
