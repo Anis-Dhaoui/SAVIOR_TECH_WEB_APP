@@ -23,10 +23,9 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          npm i -g @angular/cli
           npm install
           cd client
-          npm install
+          npm i @angular/cli
           ng build
           find -maxdepth 1 ! -name dist ! -name . -exec rm -rv {} \;
 
