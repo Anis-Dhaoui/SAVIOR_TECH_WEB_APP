@@ -30,4 +30,4 @@ steps:
     azureSubscription: 'Azure for Students(4f1cea10-6ce9-4ed5-adf0-69029bdca0f2)'
     appType: 'webApp'
     WebAppName: 'saviortech'
-    packageForLinux: '/dist'
+    packageForLinux: '/client/dist'
