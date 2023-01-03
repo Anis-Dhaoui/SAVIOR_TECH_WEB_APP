@@ -44,7 +44,7 @@ db.sequelize.sync().then(() => {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
 
-app.use(cors());
+// app.use(cors());
 // app.use(helmet());
 // This disables the `contentSecurityPolicy` middleware but keeps the rest.
 app.use(
@@ -60,7 +60,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client/dist/savior-tech-frontend')));
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
 
